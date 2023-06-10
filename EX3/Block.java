@@ -155,7 +155,7 @@ public class Block implements Collidable, Sprite, HitNotifier  {
      *
      * @param g the game to which to add the block
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addSprite(this);
         g.addCollidable(this);
     }
@@ -167,7 +167,7 @@ public class Block implements Collidable, Sprite, HitNotifier  {
      *
      * @param g the game to which to add the block
      */
-    public void addToGameAsDeathZone(Game g) {
+    public void addToGameAsDeathZone(GameLevel g) {
         g.addCollidable(this);
     }
 
@@ -185,11 +185,11 @@ public class Block implements Collidable, Sprite, HitNotifier  {
      * Removes the block, which is both a Sprite and a Collidable object, from
      * the game.
      *
-     * @param game the game
+     * @param gameLevel the game
      */
-    public void removeFromGame(Game game) {
-        game.removeCollidable(this);
-        game.removeSprite(this);
+    public void removeFromGame(GameLevel gameLevel) {
+        gameLevel.removeCollidable(this);
+        gameLevel.removeSprite(this);
     }
 
     /**

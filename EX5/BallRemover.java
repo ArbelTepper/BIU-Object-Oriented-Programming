@@ -3,7 +3,7 @@ package EX5;
 
 import EX2.Ball;
 import EX3.Block;
-import EX3.Game;
+import EX3.GameLevel;
 
 /**
  * The type Block remover.
@@ -11,17 +11,17 @@ import EX3.Game;
  * keeping count of the number of blocks that remain.
  */
 public class BallRemover implements HitListener {
-    private Game game;
+    private GameLevel gameLevel;
     private Counter remainingBalls;
 
     /**
      * Instantiates a new Block remover.
      *
-     * @param game           the game
+     * @param gameLevel           the game
      * @param remainingBalls the remained balls counter
      */
-    public BallRemover(Game game, Counter remainingBalls) {
-        this.game = game;
+    public BallRemover(GameLevel gameLevel, Counter remainingBalls) {
+        this.gameLevel = gameLevel;
         this.remainingBalls = remainingBalls;
     }
 
@@ -36,7 +36,7 @@ public class BallRemover implements HitListener {
      */
 
     public void hitEvent(Block beingHit, Ball hitter) {
-        hitter.removeFromGame(game);
+        hitter.removeFromGame(gameLevel);
         this.remainingBalls.decrease(1);
     }
 }

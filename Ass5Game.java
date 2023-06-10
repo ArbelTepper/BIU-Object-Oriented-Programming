@@ -1,6 +1,10 @@
 // Arbel Tepper 209222272
 
-import EX3.Game;
+import EX3.GameLevel;
+import EX6.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Ass5Game class represents the game as developed as far as assignment 5.
@@ -11,9 +15,12 @@ public class Ass5Game {
      * and then starts it.
      */
     public static void startGame() {
-        Game game = new Game();
-        game.initialize();
-        game.run();
+        LevelOne levelOne = new LevelOne();
+        LevelTwo levelTwo = new LevelTwo();
+        LevelThree levelThree = new LevelThree();
+        List<LevelInformation> levels = List.of(levelOne, levelTwo, levelThree);
+        GameFlow gameFlow = new GameFlow();
+        gameFlow.runLevels(levels);
     }
 
     /**

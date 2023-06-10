@@ -81,7 +81,7 @@ public class MultipleFramesBouncingBallsAnimation {
                     + size + GRAY_START + 1;
             int y0 = rand.nextInt(GRAY_DIFFERENCE - 2 * size - 4)
                     + size + GRAY_START + 1;
-            color = Animation.randomColor();
+            color = OldAnimation.randomColor();
             int angle = rand.nextInt(DEGREES) + 1;
             Velocity velocity = Velocity.fromAngleAndSpeed(angle,
                     SPEED_FACTOR / size);
@@ -97,7 +97,7 @@ public class MultipleFramesBouncingBallsAnimation {
                     + size + YELLOW_START + 1; //
             int y0 = rand.nextInt(YELLOW_DIFFERENCE - 2 * size - 4)//
                     + size + YELLOW_START + 1;
-            color = Animation.randomColor();
+            color = OldAnimation.randomColor();
             int angle = rand.nextInt(DEGREES) + 1;
             Velocity velocity = Velocity.fromAngleAndSpeed(angle,
                     SPEED_FACTOR / size);
@@ -110,7 +110,7 @@ public class MultipleFramesBouncingBallsAnimation {
             d.fillRectangle(GRAY_START, GRAY_START,
                     GRAY_DIFFERENCE, GRAY_DIFFERENCE);
             for (int i = 0; i < len / 2; i++) {
-                Animation.drawBallWithinFrame(grays[i], d, GRAY_START,
+                OldAnimation.drawBallWithinFrame(grays[i], d, GRAY_START,
                         GRAY_START, GRAY_END, GRAY_END);
             }
             d.setColor(Color.yellow);
@@ -118,7 +118,7 @@ public class MultipleFramesBouncingBallsAnimation {
                     YELLOW_DIFFERENCE, YELLOW_DIFFERENCE);
             // Draws all the balls on the board.
             for (int i = 0; i < len / 2; i++) {
-                Animation.drawBallWithinFrame(yellows[i], d, YELLOW_START,
+                OldAnimation.drawBallWithinFrame(yellows[i], d, YELLOW_START,
                         YELLOW_START, YELLOW_END, YELLOW_END);
             }
             gui.show(d);

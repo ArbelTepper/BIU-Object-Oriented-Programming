@@ -19,9 +19,7 @@ import java.util.List;
  * paddle's movement and collision detection with the ball.
  */
 public class Paddle implements Sprite, Collidable {
-    static final int PUDDLE_WIDTH = 100;
     static final int PUDDLE_HEIGHT = 10;
-    static final int MOVEMENT_DISTANCE = 5;
     static final int GUI_WIDTH = 800;
     static final int FRAME_BLOCK_WIDTH = 20;
     static final int NUMBER_OF_REGIONS = 5;
@@ -41,17 +39,24 @@ public class Paddle implements Sprite, Collidable {
     private double regionDistance;
 
     /**
-     * Creates a new Paddle object with the given keyboard sensor.
+     * Creates a new Paddle object with the given keyboard sensor, paddle
+     * speed and paddle width .
      *
      * @param keyboard the keyboard sensor to use for movement input
+     * @param paddleSpeed the speed of the puddle
+     * @param paddleWidth the width of the puddle
      */
-    public Paddle(biuoop.KeyboardSensor keyboard) {
+    public Paddle(biuoop.KeyboardSensor keyboard, int paddleSpeed,
+                  int paddleWidth) {
         this.keyboard = keyboard;
         this.color = Color.orange;
-        this.block  = new Block(new Rectangle(new Point(365, 580 - PUDDLE_HEIGHT),
-                PUDDLE_WIDTH, PUDDLE_HEIGHT));
+        this.block  =
+                new Block(new Rectangle(new Point(
+                        GUI_WIDTH / 2 - paddleWidth / 2,
+                        580 - PUDDLE_HEIGHT),
+                        paddleWidth, PUDDLE_HEIGHT));
         this.block.setColor(this.color);
-        this.movementDistance = MOVEMENT_DISTANCE;
+        this.movementDistance = paddleSpeed;
         this.numberOfRegions = NUMBER_OF_REGIONS;
         // regionDistance is the distance of each region.
         // it is calculated by dividing the distance of the upper line of the
@@ -237,7 +242,7 @@ public class Paddle implements Sprite, Collidable {
                 // difference of each angle from its previous.
                 double newDx =
                         Velocity.fromAngleAndSpeed(-60 + 30 * i,
-                                Game.BALL_SPEED).getDx();
+                                GameLevel.BALL_SPEED).getDx();
                 return new Velocity(newDx, -1 * currentVelocity.getDy());
             }
         }
@@ -259,7 +264,7 @@ public class Paddle implements Sprite, Collidable {
      *
      * @param g the game to which to add the block
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addCollidable(this);
         g.addSprite(this);
     }

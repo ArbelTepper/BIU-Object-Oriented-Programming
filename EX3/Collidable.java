@@ -41,5 +41,5 @@ public interface Collidable {
      *
      * @param g the game object
      */
-    void addToGame(Game g);
+    void addToGame(GameLevel g);
 }

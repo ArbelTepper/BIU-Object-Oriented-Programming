@@ -1,5 +1,5 @@
 // Arbel Tepper 209222272
-package EX5;
+package EX6;
 
 import EX3.GameLevel;
 import EX3.Sprite;
@@ -11,16 +11,25 @@ import java.awt.Color;
 /**
  * The type Score indicator.
  */
-public class ScoreIndicator implements Sprite {
-    private Counter score;
+public class LevelIndicator implements Sprite {
+    private String levelName;
 
     /**
-     * Instantiates a new Score indicator.
+     * Instantiates a new Level indicator.
      *
-     * @param score the score counter from Game
+     * @param levelName the level name
      */
-    public ScoreIndicator(Counter score) {
-        this.score = score;
+    public LevelIndicator(String levelName) {
+        this.levelName = levelName;
+    }
+
+    /**
+     * Gets level name.
+     *
+     * @return the level name
+     */
+    public String getLevelName() {
+        return levelName;
     }
 
     /**
@@ -28,12 +37,10 @@ public class ScoreIndicator implements Sprite {
      *
      * @param d the DrawSurface object to draw on.
      */
-
-
     @Override
     public void drawOn(DrawSurface d) {
         d.setColor(Color.BLACK);
-        d.drawText(200, 15, "Score: " + this.score.getValue(), 15);
+        d.drawText(500, 15, "Level Name: " + getLevelName(), 15);
     }
 
     /**

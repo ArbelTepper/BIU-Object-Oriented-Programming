@@ -2,7 +2,7 @@
 package EX2;
 
 import EX3.CollisionInfo;
-import EX3.Game;
+import EX3.GameLevel;
 import EX3.GameEnvironment;
 import EX3.Sprite;
 import biuoop.DrawSurface;
@@ -232,7 +232,7 @@ public class Ball implements Sprite {
      * @param g the game to which the ball will be added as a sprite
      */
     @Override
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addSprite(this);
     }
 
@@ -240,9 +240,9 @@ public class Ball implements Sprite {
      * Remove from game.
      * Removes the ball, which is solely a Sprite object, from the game.
      *
-     * @param game the game
+     * @param gameLevel the game
      */
-    public void removeFromGame(Game game) {
-        game.removeSprite(this);
+    public void removeFromGame(GameLevel gameLevel) {
+        gameLevel.removeSprite(this);
     }
 }
