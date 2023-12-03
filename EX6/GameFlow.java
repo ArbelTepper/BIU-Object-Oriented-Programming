@@ -1,3 +1,4 @@
+//Arbel Tepper 209222272
 package EX6;
 
 import EX3.GameLevel;
@@ -57,14 +58,18 @@ public class GameFlow {
             if (remainedBalls.getValue() == 0) {
                 LoseScreen loseScreen = new LoseScreen(this.keyboard,
                         this.score);
-                    this.runner.run(loseScreen);
+                KeyPressStoppableAnimation lose =
+                        new KeyPressStoppableAnimation(this.keyboard, "space", loseScreen);
+                    this.runner.run(lose);
                     this.gui.close();
                     return;
             }
         }
         WinScreen winScreen = new WinScreen(this.keyboard,
                 this.score);
-        this.runner.run(winScreen);
+        KeyPressStoppableAnimation win =
+                new KeyPressStoppableAnimation(this.keyboard, "space", winScreen);
+        this.runner.run(win);
         this.gui.close();
     }
 }

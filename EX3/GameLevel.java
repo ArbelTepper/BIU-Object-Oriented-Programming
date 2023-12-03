@@ -4,9 +4,7 @@ package EX3;
 import EX2.Ball;
 import EX2.Point;
 
-
 import EX5.Counter;
-
 import EX5.ScoreIndicator;
 import EX5.ScoreTrackingListener;
 import EX5.BallRemover;
@@ -14,8 +12,9 @@ import EX5.BlockRemover;
 
 import EX6.Animation;
 import EX6.AnimationRunner;
-import EX6.LevelInformation;
+import EX6.KeyPressStoppableAnimation;
 import EX6.LevelIndicator;
+import EX6.LevelInformation;
 import EX6.PauseScreen;
 
 import biuoop.DrawSurface;
@@ -283,12 +282,15 @@ public class GameLevel implements Animation {
      * @param d the DrawSurface to draw on
      */
     public void doOneFrame(DrawSurface d) {
-            this.sprites.drawAllOn(d);
+        this.sprites.drawAllOn(d);
             this.sprites.notifyAllTimePassed();
 
             PauseScreen pauseScreen = new PauseScreen(this.keyboard);
+           KeyPressStoppableAnimation pause =
+                   new KeyPressStoppableAnimation(this.keyboard, "space",
+                           pauseScreen);
             if (this.keyboard.isPressed("p")) {
-                this.runner.run(pauseScreen);
+                this.runner.run(pause);
             }
 
 
@@ -308,7 +310,6 @@ public class GameLevel implements Animation {
                 this.gui.show(end);
                 sleeper.sleepFor(200);
                 this.running = false;
-                //gui.close();
             }
     }
     /**

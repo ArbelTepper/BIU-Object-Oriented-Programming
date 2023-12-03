@@ -1,3 +1,4 @@
+//Arbel Tepper 209222272
 package EX6;
 
 import biuoop.DrawSurface;
@@ -28,7 +29,7 @@ public class PauseScreen implements Animation {
         d.drawText(10, d.getHeight() / 2, "paused -- press space to continue", 32);
         if (this.keyboard.isPressed(KeyboardSensor.SPACE_KEY)) {
             this.stop = true;
-        }
+       }
     }
     /**
      * Check if the animation should stop.
